@@ -1,103 +1,59 @@
-<<<<<<< HEAD
-print("🤗==== Welcome to My Calculator ====🤗")
+def add(x, y):
+    """Return the sum of x and y."""
+    return x + y
 
-# Get first number 
-first_input = input("Enter the first number: ")
-try:
-    num1 = float(first_input)
-except ValueError:
-    print("Oops! That's not a valid number.")
-    exit()
+def subtract(x, y):
+    """Return the difference of x and y."""
+    return x - y
 
-# Get second number
-second_input = input("Enter the second number: ")
-try:
-    num2 = float(second_input)
-except ValueError:
-    print("Oops! That's not a valid number.")
-    exit()
+def multiply(x, y):
+    """Return the product of x and y."""
+    return x * y
 
+def divide(x, y):
+    """Return the quotient of x and y. Raises an error if dividing by zero."""
+    if y == 0:
+        raise ValueError("Cannot divide by zero.")
+    return x / y
 
-print("\nWhat would you like to do?")
-print("1. Add (+)")
-print("2. Subtract (-)")
-print("3. Multiply (*)")
-print("4. Divide (/)")
+def calculator():
+    print("Welcome to the simple calculator!")
+    print("Select operation:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
 
-choice = input("Enter 1/2/3/4: ")
+    while True:
+        choice = input("Enter choice (1/2/3/4): ")
 
+        if choice in ['1', '2', '3', '4']:
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+                continue
 
-if choice == '1':
-    result = num1 + num2
-    symbol = '+'
-elif choice == '2':
-    result = num1 - num2
-    symbol = '-'
-elif choice == '3':
-    result = num1 * num2
-    symbol = '*'
-elif choice == '4':
-    if num2 == 0:
-        print("Error: Cannot divide by zero.")
-        exit()
-    result = num1 / num2
-    symbol = '/'
-else:
-    print("Invalid choice. Please select from 1 to 4.")
-    exit()
+            if choice == '1':
+                print(f"{num1} + {num2} = {add(num1, num2)}")
+            elif choice == '2':
+                print(f"{num1} - {num2} = {subtract(num1, num2)}")
+            elif choice == '3':
+                print(f"{num1} * {num2} = {multiply(num1, num2)}")
+            elif choice == '4':
+                try:
+                    result = divide(num1, num2)
+                    print(f"{num1} / {num2} = {result}")
+                except ValueError as e:
+                    print(e)
+        else:
+            print("Invalid choice. Please select a valid operation.")
 
-# Print result
-print(f"\nResult: {num1} {symbol} {num2} = {result}")
-print("Thanks for using my calculator!")
-=======
-print("🤗==== Welcome to My Calculator ====🤗")
+        next_calculation = input("Do you want to perform another calculation? (yes/no): ")
+        if next_calculation.lower() != 'yes':
+            print("Thank you for using the calculator. Goodbye!")
+            break
 
-# Get first number 
-first_input = input("Enter the first number: ")
-try:
-    num1 = float(first_input)
-except ValueError:
-    print("Oops! That's not a valid number.")
-    exit()
-
-# Get second number
-second_input = input("Enter the second number: ")
-try:
-    num2 = float(second_input)
-except ValueError:
-    print("Oops! That's not a valid number.")
-    exit()
-
-
-print("\nWhat would you like to do?")
-print("1. Add (+)")
-print("2. Subtract (-)")
-print("3. Multiply (*)")
-print("4. Divide (/)")
-
-choice = input("Enter 1/2/3/4: ")
-
-
-if choice == '1':
-    result = num1 + num2
-    symbol = '+'
-elif choice == '2':
-    result = num1 - num2
-    symbol = '-'
-elif choice == '3':
-    result = num1 * num2
-    symbol = '*'
-elif choice == '4':
-    if num2 == 0:
-        print("Error: Cannot divide by zero.")
-        exit()
-    result = num1 / num2
-    symbol = '/'
-else:
-    print("Invalid choice. Please select from 1 to 4.")
-    exit()
-
-# Print result
-print(f"\nResult: {num1} {symbol} {num2} = {result}")
-print("Thanks for using my calculator!")
->>>>>>> e7ab6bafc08c027c5d57179b8b18a29b08d24698
+if __name__ == "__main__":
+    calculator()
